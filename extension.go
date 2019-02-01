@@ -19,10 +19,10 @@ type Extension struct {
 // ListExtensionOptions are the options available when calling the ListExtensions API endpoint.
 type ListExtensionOptions struct {
 	APIListObject
-	ExtensionObjects []APIObject `url:"extension_objects,omitempty,brackets"`
-	Query            string      `query:"query,omitempty"`
-	ExtensionSchema  []APIObject `url:"extension_schema,omitempty,brackets"`
-	Includes         []string    `url:"include,omitempty,brackets"`
+	ExtensionObjects [][]APIObject `url:"extension_objects,omitempty,brackets"`
+	Query            string        `query:"query,omitempty"`
+	ExtensionSchema  [][]APIObject `url:"extension_schema,omitempty,brackets"`
+	Includes         []string      `url:"include,omitempty,brackets"`
 }
 
 // ListExtensionResponse is the response when calling the ListAddons API endpoint.
