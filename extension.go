@@ -1,6 +1,7 @@
 package pagerduty
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -10,10 +11,13 @@ import (
 // Extension is a third-party extension to PagerDuty's API.
 type Extension struct {
 	APIObject
-	Name             string      `json:"name,omitempty"`
-	EndpointURL      string      `json:"endpoint_url,omitempty"`
-	ExtensionSchema  APIObject   `json:"extension_schema,omitempty"`
-	ExtensionObjects []APIObject `json:"extension_objects,omitempty"`
+	Name             string          `json:"name,omitempty"`
+	EndpointURL      string          `json:"endpoint_url,omitempty"`
+	ExtensionSchema  APIObject       `json:"extension_schema,omitempty"`
+	ExtensionObjects []APIObject     `json:"extension_objects,omitempty"`
+	AuthorizationURL string          `json:"authorization_url,omitempty"`
+	Authorized       bool            `json:"authorized,omitempty"`
+	Config           json.RawMessage `json:"config,omitempty"`
 }
 
 // ListExtensionOptions are the options available when calling the ListExtensions API endpoint.
@@ -28,7 +32,7 @@ type ListExtensionOptions struct {
 // ListExtensionResponse is the response when calling the ListAddons API endpoint.
 type ListExtensionResponse struct {
 	APIListObject
-	Extensions []map[string]interface{} `json:"extensions"`
+	Extensions []Extension `json:"extensions"`
 }
 
 // ListExtensions lists all of the add-ons installed on your account.
