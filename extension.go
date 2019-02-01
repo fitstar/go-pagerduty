@@ -12,7 +12,7 @@ type Extension struct {
 	APIObject
 	Name             string      `json:"name,omitempty"`
 	EndpointURL      string      `json:"endpoint_url,omitempty"`
-	ExtensionSchema  []APIObject `json:"extension_schema,omitempty"`
+	ExtensionSchema  APIObject   `json:"extension_schema,omitempty"`
 	ExtensionObjects []APIObject `json:"extension_objects,omitempty"`
 }
 
@@ -21,7 +21,7 @@ type ListExtensionOptions struct {
 	APIListObject
 	ExtensionObjects []APIObject `url:"extension_objects,omitempty,brackets"`
 	Query            string      `query:"query,omitempty"`
-	ExtensionSchema  []APIObject `url:"extension_schema,omitempty,brackets"`
+	ExtensionSchema  APIObject   `url:"extension_schema,omitempty,brackets"`
 	Includes         []string    `url:"include,omitempty,brackets"`
 }
 
